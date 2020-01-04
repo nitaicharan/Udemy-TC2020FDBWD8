@@ -35,20 +35,21 @@ class Stories {
         choice2: '')
   ];
 
-  String getStory() => _data.first.getTitle();
-  String getChoice1() => _data.first.getChoice1();
-  String getChoice2() => _data.first.getChoice2();
-  void next(number) => _number = number;
+  void next(int choice) {
+    List end = [3, 4, 5];
+    Map<int, Map<int, int>> choices = {
+      0: {1: 2, 2: 1},
+      1: {1: 2, 2: 3},
+      2: {1: 5, 2: 5},
+    };
+    if (end.contains(_number)) restart();
+    else _number = choices[_number][choice];
+  }
+
+  String getStory() => _data[_number].getTitle();
+  String getChoice1() => _data[_number].getChoice1();
+  String getChoice2() => _data[_number].getChoice2();
+  void restart() => _number = 0;
 }
-
-//TODO: Step 23 - Use the number property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
-
-//TODO: Step 25 - Change the number property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (number) and selecting Refactor -> Rename to make the change across all the places where it's used.
-
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
-
-//TODO: Step 21 - Using the story plan, update next() to change the number depending on the choice made by the user. e.g. if number was equal to 1 and the number is 0, the number should become 2.
-
-//TODO: Step 22 - In next() if the number is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the number to 0.
 
 //TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if number is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
