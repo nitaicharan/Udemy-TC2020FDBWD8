@@ -10,4 +10,6 @@ class Story {
   }
 
   String getTitle() => _title;
+  String getChoice1() => _choice1;
+  String getChoice2() => _choice2;
 }
