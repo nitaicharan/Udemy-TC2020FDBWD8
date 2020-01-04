@@ -50,6 +50,5 @@ class Stories {
   String getChoice1() => _data[_number].getChoice1();
   String getChoice2() => _data[_number].getChoice2();
   void restart() => _number = 0;
+  bool isNotEmpty() => _data[_number].getChoice2().isNotEmpty;
 }
-
-//TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if number is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
